@@ -24,6 +24,11 @@ sr = 1
 sc = 1
 newColor = 2
 
+image = [[0, 0, 0], [0, 1, 1]]
+sr = 1
+sc = 1
+newColor = 1
+
 def dfs(image, sr, sc, pre):
 
     if sr < 0 or sr > len(image) - 1 or sc < 0 or sc > len(image[0]) - 1 or image[sr][sc] != pre:
@@ -36,7 +41,10 @@ def dfs(image, sr, sc, pre):
 
 def floodFill():
     pre = image[sr][sc]
+    if pre == newColor:
+        return image
     dfs(image, sr, sc, pre)
+    return image
 
-floodFill()
+aa = floodFill()
 print(image)
