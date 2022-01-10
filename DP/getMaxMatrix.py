@@ -14,3 +14,17 @@
 # 输出：[0,1,0,1]
 # 解释：输入中标粗的元素即为输出所表示的矩阵
 
+nums = [[-1, 0],
+        [0, -1]]
+
+rows = len(nums)
+cols = len(nums[0])
+
+sub = nums.copy()
+rowsub = [0] * rows
+rowsub[0] = sum(nums[0])
+
+for i in range(1, rows):
+    present_rowsub = sum(nums[i])
+    rowsub[i] = max(rowsub[i - 1] + present_rowsub, present_rowsub)
+    
