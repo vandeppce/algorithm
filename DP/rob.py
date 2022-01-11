@@ -15,7 +15,7 @@
 # 递推公式：f(i) = rooms(i) + max(f(i - 2), f(i - 3))
 
 rooms = [2,7,9,3,1]
-rooms = [1,2,3,1]
+rooms = [1,2,3]
 length = len(rooms)
 if length < 3:
     print(max(rooms))
