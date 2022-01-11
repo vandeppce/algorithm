@@ -11,4 +11,42 @@
 # 输入: arr = [1,2,3,4,5,6,7,8]
 # 输出: 5
 # 解释: 最长的斐波那契式子序列为 [1,2,3,5,8] 。
+import collections
 
+arr = [1,2,3,4,5,6,7,8]
+# arr = [1,3,7,11,12,14,18]
+
+# 暴力搜索
+'''
+s = set(arr)
+
+length = len(arr)
+max_cnt = 0
+
+for i in range(length):
+    for j in range(i + 1, length):
+        x = arr[i]
+        y = arr[j]
+        cnt = 2
+        while x + y in s:
+            x, y = y, x + y
+            cnt += 1
+        max_cnt = max(max_cnt, cnt)
+print(max_cnt)
+'''
+
+# 动态规划
+index = {x: i for i, x in enumerate(arr)}
+longest = collections.defaultdict(lambda: 2)
+
+ans = 0
+for k, z in enumerate(arr):
+    for j in range(k):
+        i = index.get(z - arr[j], None)
+        if i is not None and i < j:
+            cand = longest[j, k] = longest[i, j] + 1
+            ans = max(ans, cand)
+if ans >= 3:
+    print(ans)
+else:
+    print(0)
