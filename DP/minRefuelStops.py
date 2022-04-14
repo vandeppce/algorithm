@@ -32,6 +32,8 @@ target = 100
 startFuel = 50
 stations = [[25,50],[50,25]]
 
+# 错误示范，不能记录每个位置的最少加油次数
+'''
 stations.append([target, 0])
 
 start = startFuel - stations[0][0]
@@ -61,3 +63,9 @@ for i in range(1, length):
         addN = remainN
     current = stations[i][0]
 print(cnt)
+'''
+# 栈
+length = len(stations)
+
+for i in range(length):
+
