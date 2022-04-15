@@ -69,3 +69,4 @@ length = len(stations)
 
 for i in range(length):
 
+    pass
