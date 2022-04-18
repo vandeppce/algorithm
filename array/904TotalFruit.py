@@ -9,3 +9,42 @@
 # 给你一个整数数组 fruits ，返回你可以收集的水果的 最大 数目。
 #
 
+# 滑动窗口
+
+fruits = [3,3,3,1,2,1,1,2,3,3,4]
+fruits = [1,2,1]
+fruits = [0,1,2,2]
+fruits = [1,2,3,2,2]
+fruits = [4,1,1,1,3,1,7,5]
+fruits = [3,3,3,1,2,1,1,2,3,3,4,3,4,4,4]
+def totalFruit(fruits):
+    length = len(fruits)
+    slow = 0
+    fast = 0
+    currentFruit = []
+    maxFruit = 0
+
+    while fast < length:
+        tmp = fruits[fast]
+        if tmp not in currentFruit:
+            if len(currentFruit) < 2:
+                currentFruit.append(tmp)
+                fast += 1
+            else:
+                maxFruit = max(maxFruit, fast - slow)
+                retainFruit = fruits[fast - 1]
+                tmp1 = fast - 1
+                updateSlow = 0
+                while tmp1 > slow:
+                    tmp1 -= 1
+                    if fruits[tmp1] != retainFruit:
+                        updateSlow = tmp1 + 1
+                        break
+                slow = updateSlow
+                currentFruit = [retainFruit, tmp]
+                fast += 1
+        else:
+            fast += 1
+    return max(maxFruit, fast - slow)
+
+print(totalFruit(fruits))
