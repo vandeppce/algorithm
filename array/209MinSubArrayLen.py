@@ -19,14 +19,16 @@ nums = [2,3,1,2,4,3]
 
 # target = 15
 # nums = [5,1,3,5,10,7,4,9,2,8]
-
+target = 11
+nums = [1,1,1,1,1,1,1,1]
 length = len(nums)
 slow = 0
 fast = 0
 current_min = length
 
 print(sum(nums))
-
+if sum(nums) < target:
+    print(0)
 while fast < length:
     if slow == fast:
         count = nums[fast]
@@ -40,3 +42,27 @@ while fast < length:
         slow += 1
 
 print(current_min)
+
+"""
+# 二刷
+def minSubArrayLen(target, nums):
+    slow = 0
+    fast = 0
+
+    total = 0
+    minLength = float("inf")
+    if sum(nums) < target:
+        return 0
+
+    while fast < len(nums):
+        while total < target and fast < len(nums):
+            total += nums[fast]
+            fast += 1
+
+        while total >= target and slow < fast:
+            total -= nums[slow]
+            slow += 1
+
+        minLength = min(minLength, fast - slow + 1)
+    return minLength
+"""

@@ -46,3 +46,40 @@ def searchRange(nums, target):
     else: return [-1, -1]
     
 print(searchRange(nums, target))
+
+'''
+# 二刷答案
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        def getLeftBorder(nums, target):
+            left = 0
+            right = len(nums) - 1
+            while left <= right:
+                middle = (left + right) // 2
+                mid_num = nums[middle]
+                if mid_num >= target:
+                    right = middle - 1
+                else:
+                    left = middle + 1
+            return right
+
+        def getRightBorder(nums, target):
+            left = 0
+            right = len(nums) - 1
+            while left <= right:
+                middle = (left + right) // 2
+                mid_num = nums[middle]
+                if mid_num > target:
+                    right = middle - 1
+                else:
+                    left = middle + 1
+            return left
+
+        leftBorder = getLeftBorder(nums, target)
+        rightBorder = getRightBorder(nums, target)
+
+        if rightBorder - leftBorder < 2:
+            return [-1, -1]
+        else:
+            return [leftBorder + 1, rightBorder - 1]
+'''

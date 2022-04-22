@@ -33,3 +33,20 @@ def intersect(nums1, nums2):
     return ret
 
 print(intersect(nums1, nums2))
+
+"""
+# 二刷
+class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        hash1 = {}
+        res = []
+        for num in nums1:
+            hash1[num] = hash1.get(num, 0) + 1
+        for num in nums2:
+            if num in hash1.keys():
+                res.append(num)
+                hash1[num] -= 1
+                if hash1[num] == 0:
+                    del hash1[num]
+        return res
+"""

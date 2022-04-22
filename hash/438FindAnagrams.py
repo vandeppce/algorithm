@@ -8,8 +8,9 @@ s = "cbaebabacd"
 p = "abc"
 s = "abab"
 p = "ab"
-
-def findAnagrams(self, s: str, p: str) -> List[int]:
+s = "aaaaaaaaaa"
+p = "aaaaaaaaaaaaa"
+def findAnagrams(s: str, p: str):
     lengthS = len(s)
     lengthP = len(p)
 
@@ -73,3 +74,48 @@ def findAnagrams(self, s: str, p: str) -> List[int]:
 
 
 print(findAnagrams(s, p))
+
+"""
+# 二刷
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        hashP = {}
+        res = []
+        if len(s) < len(p):
+            return res
+            
+        for chrP in p:
+            hashP[chrP] = hashP.get(chrP, 0) + 1
+        
+        slow = 0
+        fast = 0
+        for i in range(len(p)):
+            if s[i] in hashP.keys():
+                hashP[s[i]] -= 1
+            fast += 1
+        flag = 0
+        for k, v in hashP.items():
+            if v != 0:
+                flag = 1
+                break
+        if not flag:
+            res.append(0)
+
+        while fast < len(s):
+            outChr = s[slow]
+            inChr = s[fast]
+            slow += 1
+            fast += 1
+            if outChr in hashP.keys():
+                hashP[outChr] += 1
+            if inChr in hashP.keys():
+                hashP[inChr] -= 1
+            flag = 0
+            for k, v in hashP.items():
+                if v != 0:
+                    flag = 1
+                    break
+            if not flag:
+                res.append(slow)
+        return res
+"""

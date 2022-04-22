@@ -30,3 +30,21 @@ def canConstruct(ransomNote, magazine):
     return True
 
 print(canConstruct(ransomNote, magazine))
+
+"""
+# 二刷
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        hashM = {}
+        for chrM in magazine:
+            hashM[chrM] = hashM.get(chrM, 0) + 1
+        
+        for chrR in ransomNote:
+            if chrR in hashM.keys():
+                hashM[chrR] -= 1
+                if hashM[chrR] == 0:
+                    del hashM[chrR]
+            else:
+                return False
+        return True
+"""
