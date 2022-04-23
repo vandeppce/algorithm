@@ -1,38 +1,33 @@
-nums = [1,-2,-5,-4,-3,3,3,5]
-target = -11
-
-def fourSum(nums, target):
-    nums = sorted(nums)
+nums = [1,3,-1,-3,5,3,6,7]
+k = 3
+nums = [-7,-8,7,5,7,1,6,0]
+k = 4
+def maxSlidingWindow(nums, k):
+    queue = []
     res = []
+    for i in range(k):
+        if not queue or queue[-1] > nums[i]:
+            queue.append(nums[i])
+        else:
+            while queue and queue[-1] < nums[i]:
+                queue.pop()
+            queue.append(nums[i])
+    res.append(queue[0])
 
-    for i in range(len(nums)):
-        if nums[i] >= 0 and nums[i] > target:
-            break
-        if i > 0 and nums[i - 1] == nums[i]:
-            continue
-        for j in range(i + 1, len(nums)):
-            if nums[i] + nums[j] >= 0 and nums[i] + nums[j] > target:
-                break
-            if j > i + 1 and nums[j - 1] == nums[j]:
-                continue
+    for i in range(k, len(nums)):
+        outElement = nums[i - k]
+        inElement = nums[i]
 
-            left = j + 1
-            right = len(nums) - 1
-            while left < right:
-                total = nums[i] + nums[j] + nums[left] + nums[right]
+        if outElement == queue[0]:
+            queue.pop(0)
+        if not queue or queue[-1] > inElement:
+            queue.append(inElement)
+        else:
+            while queue and queue[-1] < inElement:
+                queue.pop()
+            queue.append(inElement)
+        res.append(queue[0])
 
-                if total > target:
-                    right -= 1
-                elif total < target:
-                    left += 1
-                else:
-                    res.append([nums[i], nums[j], nums[left], nums[right]])
-                    while left < right and nums[left + 1] == nums[left]:
-                        left += 1
-                    while left < right and nums[right - 1] == nums[right]:
-                        right -= 1
-                    left += 1
-                    right -= 1
     return res
 
-print(fourSum(nums, target))
+print(maxSlidingWindow(nums, k))

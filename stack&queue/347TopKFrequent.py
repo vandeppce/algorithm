@@ -19,7 +19,7 @@ def topKFrequent(nums, k):
             heapq.heappop(heap)
 
     res = []
-    for i in range(k):
+    for i in range(k): # 此时输出为前k个频率从小到大排序
         res.append(heapq.heappop(heap)[1])
     return res
 

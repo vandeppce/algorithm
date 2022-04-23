@@ -25,7 +25,35 @@ class MyQueue:
     def empty(self) -> bool:
         return not self.queue_in and not self.queue_out
 
+"""
+# 二刷，每次操作后清空out数组恢复in数组
+class MyQueue:
 
+    def __init__(self):
+        self.stackIn = []
+        self.stackOut = []
+
+    def push(self, x: int) -> None:
+        self.stackIn.append(x)
+
+    def pop(self) -> int:
+        while self.stackIn:
+            self.stackOut.append(self.stackIn.pop())
+        popNum = self.stackOut.pop()
+        while self.stackOut:
+            self.stackIn.append(self.stackOut.pop())
+        return popNum
+    def peek(self) -> int:
+        while self.stackIn:
+            self.stackOut.append(self.stackIn.pop())
+        retNum = self.stackOut[-1]
+        while self.stackOut:
+            self.stackIn.append(self.stackOut.pop())
+        return retNum
+
+    def empty(self) -> bool:
+        return not self.stackIn and not self.stackOut
+"""
 # Your MyQueue object will be instantiated and called as such:
 # obj = MyQueue()
 # obj.push(x)

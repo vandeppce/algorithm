@@ -58,3 +58,35 @@ class Solution:
         return res
 
 print(maxSlidingWindow(nums, k))
+
+"""
+# 二刷
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        queue = []
+        res = []
+        for i in range(k):
+            if not queue or queue[-1] > nums[i]:
+                queue.append(nums[i])
+            else:
+                while queue and queue[-1] < nums[i]:
+                    queue.pop()
+                queue.append(nums[i])
+        res.append(queue[0])
+
+        for i in range(k, len(nums)):
+            outElement = nums[i - k]
+            inElement = nums[i]
+
+            if outElement == queue[0]:
+                queue.pop(0)
+            if not queue or queue[-1] > inElement:
+                queue.append(inElement)
+            else:
+                while queue and queue[-1] < inElement:
+                    queue.pop()
+                queue.append(inElement)
+            res.append(queue[0])
+        
+        return res
+"""
