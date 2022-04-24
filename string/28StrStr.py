@@ -57,3 +57,39 @@ def strStr(haystack, needle):
     return -1
 
 print(strStr(haystack, needle))
+
+"""
+# 二刷，重点是构造getnext数组
+def getnext(needle):
+    next = [0] * len(needle)
+    j = 0
+    for i in range(1, len(needle)):
+        while (j > 0 and needle[i] != needle[j]):
+            j = next[j - 1]
+            # j -= 1 也可
+        if (needle[i] == needle[j]):
+            j += 1
+        next[i] = j
+    return next
+
+def strStr(haystack: str, needle: str) -> int:
+    hIndex = 0
+    nIndex = 0
+    nxt = getnext(needle)
+    if needle == "":
+        return 0
+    while hIndex < len(haystack):
+        if haystack[hIndex] == needle[nIndex]:
+            hIndex += 1
+            nIndex += 1
+
+            if nIndex == len(needle):
+                return hIndex - len(needle)
+        else:
+            if nIndex == 0:
+                hIndex += 1
+            else:
+                nIndex = nxt[nIndex - 1]
+    return -1
+print(strStr(haystack, needle))
+"""

@@ -1,33 +1,16 @@
-nums = [1,3,-1,-3,5,3,6,7]
-k = 3
-nums = [-7,-8,7,5,7,1,6,0]
-k = 4
-def maxSlidingWindow(nums, k):
-    queue = []
-    res = []
-    for i in range(k):
-        if not queue or queue[-1] > nums[i]:
-            queue.append(nums[i])
-        else:
-            while queue and queue[-1] < nums[i]:
-                queue.pop()
-            queue.append(nums[i])
-    res.append(queue[0])
+s = "ababababab"
+# needle = "actgpacy"
+def getnext(needle):
+    next = [0] * len(needle)
+    j = 0
+    for i in range(1, len(needle)):
+        while (j > 0 and needle[i] != needle[j]):
+            j = next[j - 1]
+            # j -= 1 也可
+        if (needle[i] == needle[j]):
+            j += 1
+        next[i] = j
+    return next
 
-    for i in range(k, len(nums)):
-        outElement = nums[i - k]
-        inElement = nums[i]
 
-        if outElement == queue[0]:
-            queue.pop(0)
-        if not queue or queue[-1] > inElement:
-            queue.append(inElement)
-        else:
-            while queue and queue[-1] < inElement:
-                queue.pop()
-            queue.append(inElement)
-        res.append(queue[0])
-
-    return res
-
-print(maxSlidingWindow(nums, k))
+print(getnext(s))
