@@ -27,4 +27,15 @@ class Solution:
                 if node.right:
                     queue.append(node.right)
         return depth
-    
+
+# 递归，后序遍历
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        def getDepth(root):
+            if not root:
+                return 0
+            leftDepth = getDepth(root.left)
+            rightDepth = getDepth(root.right)
+            return 1 + max(leftDepth, rightDepth)
+
+        return getDepth(root)

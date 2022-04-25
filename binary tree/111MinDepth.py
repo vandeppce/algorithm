@@ -29,3 +29,17 @@ class Solution:
                     if node.right:
                         queue.append(node.right)
         return count
+
+# 递归，如果一侧为空，返回另一侧
+class Solution:
+    def minDepth(self, root: TreeNode) -> int:
+        def getDepth(root):
+            if not root:
+                return 0
+            if not root.left and root.right:
+                return 1 + getDepth(root.right)
+            elif root.left and not root.right:
+                return 1 + getDepth(root.left)
+            else:
+                return min(getDepth(root.left), getDepth(root.right)) + 1
+        return getDepth(root)
