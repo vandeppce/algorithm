@@ -37,3 +37,38 @@ class Solution:
             return False
         else:
             return calSum(root, targetSum - root.val)
+
+"""
+# 二刷，append的位置
+class Solution:
+    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
+        def calSum(root, total):
+            path.append(root.val)
+            if not root.left and not root.right and not total:
+                res.append(path[:])
+                return
+            if not root.left and not root.right and total:
+                return
+            
+            if root.left:
+                # path.append(root.left.val)
+                total -= root.left.val
+                calSum(root.left, total)
+                total += root.left.val
+                path.pop()
+            
+            if root.right:
+                # path.append(root.right.val)
+                total -= root.right.val
+                calSum(root.right, total)
+                total += root.right.val
+                path.pop()
+        
+        res = []
+        if not root:
+            return res
+
+        path = []
+        calSum(root, targetSum - root.val)
+        return res
+"""

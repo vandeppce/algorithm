@@ -23,3 +23,29 @@ class Solution:
                 if node.right:
                     queue.append(node.right)
         return ret
+
+"""
+# 二刷，递归法，当currdepth大于maxdepth时，记录的肯定是最左边的节点
+class Solution:
+    def __init__(self):
+        self.ret = 0
+        self.max_depth = -1
+    def findBottomLeftValue(self, root: Optional[TreeNode]) -> int:
+        def traversal(root, curr_depth):
+            if not root.left and not root.right:
+                if curr_depth > self.max_depth:
+                    self.max_depth = curr_depth
+                    self.ret = root.val
+                return
+
+            if root.left:
+                curr_depth += 1
+                traversal(root.left, curr_depth)
+                curr_depth -= 1
+            if root.right:
+                curr_depth += 1
+                traversal(root.right, curr_depth)
+                curr_depth -= 1
+        traversal(root, 0)
+        return self.ret        
+"""

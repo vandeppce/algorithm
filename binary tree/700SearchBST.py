@@ -22,3 +22,18 @@ class Solution:
 
         rightSearch = self.searchBST(root.right, val)
         return rightSearch
+
+"""
+# 运用二叉搜索树的性质
+class Solution:
+    def searchBST(self, root: TreeNode, val: int) -> TreeNode:
+        if not root:
+            return
+        
+        if root.val == val:
+            return root
+        if root.val > val:
+            return self.searchBST(root.left, val)
+        if root.val < val:
+            return self.searchBST(root.right, val)
+"""

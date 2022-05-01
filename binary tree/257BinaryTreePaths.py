@@ -30,3 +30,29 @@ class Solution:
         res = []
         self.traversal(root, path, res)
         return res
+
+"""
+# 二刷, traversal函数可以不要其他参数
+class Solution:
+    def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
+        def traversal(root):
+            path.append(root.val)
+            if not root.left and not root.right:
+                tmp = ""
+                for item in path[:-1]:
+                    tmp = tmp + str(item) + "->"
+                res.append(tmp + str(path[-1]))
+                return
+        
+            if root.left:
+                traversal(root.left)
+                path.pop()
+            if root.right:
+                traversal(root.right)
+                path.pop()
+
+        path = []
+        res = []
+        traversal(root)
+        return res
+"""
