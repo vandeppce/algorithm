@@ -31,3 +31,36 @@ class Solution:
     def letterCombinations(self, digits: str):
         self.backtracking(digits)
         return self.res
+
+"""
+# 二刷，设置start
+class Solution:
+    def __init__(self):
+        self.dict = {"2": "abc",
+                     "3": "def",
+                     "4": "ghi",
+                     "5": "jkl",
+                     "6": "mno",
+                     "7": "pqrs",
+                     "8": "tuv",
+                     "9": "wxyz"}
+        self.path = []
+        self.res = []
+    
+    def backtracking(self, digits, start):
+        if len(self.path) == len(digits):
+            if self.path:
+                self.res.append("".join(self.path))
+            return
+        
+        for i in range(start, len(digits)):
+            current = digits[i]
+            for j in range(len(self.dict[current])):
+                self.path.append(self.dict[current][j])
+                self.backtracking(digits, i + 1)
+                self.path.pop()
+
+    def letterCombinations(self, digits: str) -> List[str]:
+        self.backtracking(digits, 0)
+        return self.res
+"""

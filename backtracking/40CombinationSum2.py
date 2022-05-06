@@ -18,6 +18,7 @@ class Solution:
             return
 
         for i in range(start, len(candidates)):
+            # 这里判断同层的重复元素
             if i > start and candidates[i] == candidates[i - 1]:
                 continue
             self.path.append(candidates[i])

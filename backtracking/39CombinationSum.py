@@ -29,6 +29,31 @@ class Solution:
         self.backtracking(candidates, target, 0, 0)
         return self.res
 
+"""
+# 二刷，差不多
+class Solution:
+    def __init__(self):
+        self.path = []
+        self.res = []
+    
+    def backtracking(self, candidates, target, total, start):
+        if total > target:
+            return
+        if total == target:
+            self.res.append(self.path[:])
+        
+        for i in range(start, len(candidates)):
+            total += candidates[i]
+            self.path.append(candidates[i])
+            self.backtracking(candidates, target, total, start)
+            self.path.pop()
+            total -= candidates[i]
+            start += 1
+            
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        self.backtracking(candidates, target, 0, 0)
+        return self.res
+"""
 candidates = [2,3,6,7]
 target = 7
 

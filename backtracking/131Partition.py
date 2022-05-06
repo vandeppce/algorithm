@@ -23,6 +23,28 @@ class Solution:
         self.backtracking(s, 0)
         return self.res
 
+"""
+# 二刷，直接操作s
+class Solution:
+    def __init__(self):
+        self.path = []
+        self.res = []
+    
+    def backtracking(self, s):
+        if not s:
+            self.res.append(self.path[:])
+            return
+
+        for i in range(len(s)):
+            if s[:i + 1] == s[:i + 1][::-1]:
+                self.path.append(s[:i + 1])
+                self.backtracking(s[i + 1:])
+                self.path.pop()
+
+    def partition(self, s: str) -> List[List[str]]:
+        self.backtracking(s)
+        return self.res
+"""
 s = "aab"
 solu = Solution()
 print(solu.partition(s))
