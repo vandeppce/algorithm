@@ -39,6 +39,41 @@ class Solution:
         self.backtracking(tickets, len(tickets) + 1, "JFK")
         return self.res
 
+"""
+# 二刷，注意这里递归要有返回值
+class Solution:
+    def __init__(self):
+        self.path = ["JFK"]
+    
+    def backtracking(self, tickets, start):
+        if not tickets:
+            return True
+        
+        ends = {}
+        for i, item in enumerate(tickets):
+            if item[0] == start:
+                ends[item[1]] = i
+        
+        if not ends:
+            return False
+
+        ends = sorted(ends.items(), key = lambda item: item[0])
+
+        for end in ends:
+            self.path.append(end[0])
+            start = end[0]
+            ret = tickets.pop(end[1])
+            findRes = self.backtracking(tickets, start)
+            if findRes:
+                return True
+            else:
+                self.path.pop()
+                tickets.insert(end[1], ret)
+
+    def findItinerary(self, tickets: List[List[str]]) -> List[str]:
+        self.backtracking(tickets, "JFK")
+        return self.path
+"""
 # tickets = [["MUC","LHR"],["JFK","MUC"],["SFO","SJC"],["LHR","SFO"]]
 # tickets = [["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"],["ATL","SFO"]]
 tickets = [["JFK","KUL"],["JFK","NRT"],["NRT","JFK"]]

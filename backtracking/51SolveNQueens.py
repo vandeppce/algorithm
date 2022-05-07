@@ -15,6 +15,8 @@ class Solution:
         for i in range(row):
             if board[i][col] == 'Q':
                 return False
+            
+        # 同一行，不需要判断，因为每一行填了Q以后直接到下一行
 
         # 左上对角线
         i = row - 1

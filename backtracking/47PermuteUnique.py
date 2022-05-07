@@ -23,3 +23,29 @@ class Solution:
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
         self.backtracking(nums)
         return self.res
+
+"""
+#二刷，不实用usage数组，但是要对nums排序
+class Solution:
+    def __init__(self):
+        self.path = []
+        self.res = []
+    
+    def backtracking(self, nums):
+        if not nums:
+            self.res.append(self.path[:])
+            return
+
+        for i in range(len(nums)):
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            self.path.append(nums[i])
+            ret = nums.pop(i)
+            self.backtracking(nums)
+            self.path.pop()
+            nums.insert(i, ret)
+
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        self.backtracking(sorted(nums))
+        return self.res
+"""

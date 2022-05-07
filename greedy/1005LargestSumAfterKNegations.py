@@ -21,4 +21,21 @@ def largestSumAfterKNegations(nums, k):
         nums = sorted(nums)
     return sum(nums)
 
+"""
+# 二刷，按绝对值排序，先修改所有负数。修改完了如果k还大于0，则反复修改最小的数
+class Solution:
+    def largestSumAfterKNegations(self, nums: List[int], k: int) -> int:
+        nums = sorted(nums, key = lambda item: abs(item))
+        for i in range(len(nums) - 1, -1, -1):
+            if nums[i] < 0:
+                nums[i] = -nums[i]
+                k -= 1
+            if k <= 0:
+                return sum(nums)
+        
+        while k > 0:
+            nums[0] = -nums[0]
+            k -= 1
+        return sum(nums)
+"""
 print(largestSumAfterKNegations(nums, k))

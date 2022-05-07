@@ -9,6 +9,7 @@
 # 给你一个整数数组 nums ，返回 nums 中作为 摆动序列 的 最长子序列的长度 。
 #
 
+# 要考虑差值等于0的情况
 class Solution:
     def wiggleMaxLength(self, nums: List[int]) -> int:
         if len(nums) <= 1:

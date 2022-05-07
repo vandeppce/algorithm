@@ -2,7 +2,7 @@
 #
 # 解集 不能 包含重复的子集。返回的解集中，子集可以按 任意顺序 排列。
 #
-# 去重，不使用used数组时需要先对nums排序
+# 去重，不使用used数组时需要先对nums排序，去重时要去除同行元素
 class Solution:
     def __init__(self):
         self.path = []

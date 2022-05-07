@@ -20,3 +20,26 @@ class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         self.backtracking(nums)
         return self.res
+
+"""
+#二刷，记录used情况
+class Solution:
+    def __init__(self):
+        self.path = []
+        self.res = []
+    
+    def backtracking(self, nums):
+        if len(self.path) == len(nums):
+            self.res.append(self.path[:])
+            return
+        
+        for i in range(len(nums)):
+            if nums[i] not in self.path:
+                self.path.append(nums[i])
+                self.backtracking(nums)
+                self.path.pop()
+
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        self.backtracking(nums)
+        return self.res
+"""
