@@ -19,9 +19,14 @@ def jump(nums):
         currJump = nums[i]
         nextPos = 0
         nextId = i
+        # 注意，这层判断要在循环外
         if i + currJump >= len(nums) - 1:
             return jumps + 1
         for j in range(currJump + 1):
+            """ 这样写不对
+            if i + j + nums[i + j] >= len(nums) - 1:
+                return jumps + 2
+            """
             if j + nums[i + j] > nextPos:
                 nextPos = j + nums[i + j]
                 nextId = i + j

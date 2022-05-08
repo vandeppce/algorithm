@@ -1,27 +1,49 @@
-n = 101
+board = [["5","3",".",".","7",".",".",".","."],["6",".",".","1","9","5",".",".","."],
+         [".","9","8",".",".",".",".","6","."],["8",".",".",".","6",".",".",".","3"],
+         ["4",".",".","8",".","3",".",".","1"],["7",".",".",".","2",".",".",".","6"],
+         [".","6",".",".",".",".","2","8","."],[".",".",".","4","1","9",".",".","5"],[".",".",".",".","8",".",".","7","9"]]
 
 class Solution:
-    def monotoneIncreasingDigits(self, n: int) -> int:
-        nums = []
-        while n:
-            nums.insert(0, n % 10)
-            n = n // 10
+    def isValid(self, row, col, board, i):
+        # 同行
+        for j in range(9):
+            if board[row][j] == i:
+                return False
 
-        for i in range(1, len(nums)):
-            if nums[i] < nums[i - 1]:
-                j = i - 1
-                while j > 0 and nums[j - 1] == nums[j]:
-                    j -= 1
-                nums[j] -= 1
-                nums[j + 1:] = [9] * (len(nums) - j - 1)
+        # 同列
+        for j in range(9):
+            if board[j][col] == i:
+                return False
 
-        ret = nums.pop()
-        flag = 10
+        # 同一个九宫格
+        s_row = (row // 3) * 3
+        s_col = (row // 3) * 3
+        for j in range(s_row, s_row + 3):
+            for k in range(s_col, s_col + 3):
+                if board[j][k] == i:
+                    return False
+        return True
 
-        while nums:
-            ret += nums.pop() * flag
-            flag *= 10
-        return ret
+    def backtracking(self, board):
+        for row in range(9):
+            for col in range(9):
+                if board[row][col] != '.':
+                    continue
+                for i in range(1, 10):
+                    if not self.isValid(row, col, board, str(i)):
+                        continue
+                    board[row][col] = str(i)
+                    if self.backtracking(board):
+                        return True
+                    board[row][col] = '.'
+                return False
+        return True
+
+    def solveSudoku(self, board) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        self.backtracking(board)
 
 solu = Solution()
-print(solu.monotoneIncreasingDigits(n))
+print(solu.backtracking(board))

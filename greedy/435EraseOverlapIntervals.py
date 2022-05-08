@@ -21,4 +21,21 @@ def eraseOverlapIntervals(intervals):
             prev = interval
     return remove
 
+"""
+# 二刷，一样
+class Solution:
+    def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
+        intervals = sorted(intervals, key = lambda item: item[0])
+        sets = [intervals[0]]
+        nums = 0
+
+        for interval in intervals[1:]:
+            if interval[0] >= sets[-1][1]:
+                sets.append(interval)
+            else:
+                nums += 1
+                if interval[1] <= sets[-1][1]:
+                    sets[-1] = interval
+        return nums
+"""
 print(eraseOverlapIntervals(intervals))

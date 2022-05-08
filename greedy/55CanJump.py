@@ -31,4 +31,26 @@ def canJump(nums) -> bool:
         i = nextId
     return False
 
+"""
+# 二刷
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        if len(nums) == 1:
+            return True
+        i = 0
+        while i < len(nums):
+            maxSteps = nums[i] + 1
+            fastDis = 0
+            for step in range(maxSteps):
+                nextDis = step + nums[i + step]
+                if i + nextDis >= len(nums) - 1:
+                    return True
+                elif nextDis >= fastDis:
+                    fastDis = nextDis
+                    nextStep = i + step
+                if nextDis == 0:
+                    return False
+            i = nextStep
+        return True
+"""
 print(canJump(nums))

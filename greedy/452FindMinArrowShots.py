@@ -29,4 +29,19 @@ def findMinArrowShots(points):
                 shots += 1
     return shots
 
+"""
+# 二刷
+class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -> int:
+        points = sorted(points, key = lambda item: item[0])
+        num = 1
+        interval = points[0]
+        for point in points[1:]:
+            if point[0] > interval[1]:
+                num += 1
+                interval = point
+            else:
+                interval = [max(interval[0], point[0]), min(interval[1], point[1])]
+        return num
+"""
 print(findMinArrowShots(points))

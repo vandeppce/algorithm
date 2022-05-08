@@ -31,4 +31,28 @@ def canCompleteCircuit(gas, cost):
             prev = 0
     return start
 
+"""
+# 二刷，差不多。主要是一个循环变量为经过的加油站个数。内循环为加油站的序号，通过取余来实现循环查找
+class Solution:
+    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
+        if sum(gas) < sum(cost):
+            return -1
+        
+        rest = 0
+        nums = 1
+        i = 0
+        start = 0
+        while nums < len(gas):
+            i = i % len(gas)
+            if rest + gas[i] >= cost[i]:
+                nums += 1
+                rest = rest + gas[i] - cost[i]
+                i += 1
+            else:
+                i += 1
+                start = i
+                rest = 0
+                nums = 1
+        return start
+"""
 print(canCompleteCircuit(gas, cost))

@@ -6,7 +6,8 @@ intervals = [[1,3],[2,6],[8,10],[15,18]]
 intervals = [[1,4],[4,5]]
 intervals = [[1,4],[2,3]]
 
-# 排序，从小到大合并。每次只和res数组中的最后一个比较交叉程度即可
+# 排序，从小到大合并。每次只和res数组中的最后一个比较交叉程度即可。
+# 重点是先排序
 def merge(intervals):
     intervals = sorted(intervals)
     res = [intervals[0]]

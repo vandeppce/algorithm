@@ -18,4 +18,14 @@ def reconstructQueue(people):
         index.pop(p[1])
     return res
 
+"""
+# 二刷，h降序，k升序。由于在遍历每一个p时，所有身高比其高的都已经被确定位置，所以其索引就是k（后面没有可能出现比他高的）
+class Solution:
+    def reconstructQueue(self, people: List[List[int]]) -> List[List[int]]:
+        people = sorted(people, key = lambda item: [-item[0], item[1]])
+        ret = []
+        for p in people:
+            ret.insert(p[1], p)
+        return ret
+"""
 print(reconstructQueue(people))

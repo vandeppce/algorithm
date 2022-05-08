@@ -25,4 +25,30 @@ def partitionLabels(s):
         lens.append(len(sequence))
     return lens
 
+"""
+# 二刷，差不多，主要是记录当前字符在已划分字符串序列中的索引，并合并该子串及其之后所有串，同时更新索引
+class Solution:
+    def partitionLabels(self, s: str) -> List[int]:
+        chrDict = {}
+        strs = []
+        s = list(s)
+        for i, chr in enumerate(s):
+            if chr not in chrDict.keys():
+                chrDict[chr] = len(strs)
+                strs.append(chr)
+            else:
+                tmp = ""
+                idx = chrDict[chr]
+                for c in strs[idx:]:
+                    tmp += c
+                strs = strs[:idx]
+                strs.append(tmp + chr)
+                for k, v in chrDict.items():
+                    if v >= idx:
+                        chrDict[k] = idx
+        res = []
+        for item in strs:
+            res.append(len(item))
+        return res
+"""
 print(partitionLabels(S))
