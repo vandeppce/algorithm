@@ -9,3 +9,18 @@ class Solution:
         for i in range(2, n):
             nums.append(nums[i - 1] + nums[i - 2])
         return nums[n - 1]
+
+# 完全背包问题
+def climbStairs(n):
+    nums = [1, 2]
+    dp = [0] * (n + 1)
+    dp[0] = 1
+
+    for j in range(n + 1):
+        for i in range(len(nums)):
+            if j >= nums[i]:
+                dp[j] += dp[j - nums[i]]
+    print(dp)
+
+n = 3
+print(climbStairs(n))
