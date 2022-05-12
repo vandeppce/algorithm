@@ -4,3 +4,15 @@
 # 给定一个代表每个房屋存放金额的非负整数数组，计算你 不触动警报装置的情况下 ，一夜之内能够偷窃到的最高金额。
 #
 
+nums = [2,7,9,3,1]
+# nums = [2,1,3,9,7]
+nums = [5]
+def rob(nums):
+    dp = [0] * (len(nums) + 1)
+    dp[1] = nums[0]
+    for i in range(2, len(nums) + 1):
+        dp[i] = max(dp[i - 2] + nums[i - 1], dp[i - 1])
+    print(dp)
+    return dp[-1]
+
+print(rob(nums))
