@@ -9,6 +9,10 @@
 nums = [1,1,1,1,1]
 target = 3
 
+# 装满背包有几种方法，dp[j] += dp[j - nums[i]]
+# 不考虑nums[i]的情况下，填满容量为j - nums[i]的背包，有dp[j - nums[i]]种方法。
+# 那么只要搞到nums[i]的话，凑成dp[j]就有dp[j - nums[i]] 种方法。
+
 def findTargetSumWays(nums, target):
     if sum(nums) < abs(target) or (sum(nums) + target) % 2 == 1:
         return 0

@@ -12,6 +12,8 @@ n = 3
 # 转化为01背包问题，两个遍历量。转化成背包问题后变成了，选择子串最多，并且0和1的个数在m和n的限制下。
 # 转化后，外循环遍历strs，相当于前面的背包问题外循环遍历物品，内循环则遍历0和1的个数。由于要遍历0和1，因此内循环为两层子循环。
 # 两层子循环中，0和1谁外谁内都行。此时，重量就是该串中0或1的个数，价值为1，代表可不可选。
+# 问背包装满最大价值：dp[j] = max(dp[j], dp[j - weight[i]] + value[i])
+
 def findMaxForm(strs, m, n):
     dp = [[0] * (n + 1) for _ in range(m + 1)]
     for str in strs:
@@ -24,6 +26,8 @@ def findMaxForm(strs, m, n):
                 oneNum += 1
         for i in range(m, zeroNum - 1, -1):
             for j in range(n, oneNum - 1, -1):
+                # dp[i][j]: 不选c, 沿用上次的遍历
+                # dp[i - zeroNum][j - oneNum] + 1: 选c，比dp[i - zeroNum][j - oneNum]多一个串
                 dp[i][j] = max(dp[i][j], dp[i - zeroNum][j - oneNum] + 1)
     print(dp)
 

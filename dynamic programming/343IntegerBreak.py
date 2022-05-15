@@ -14,4 +14,14 @@ def integerBreak(n):
             res[i] = max(res[i], j * (i - j), j * res[i - j])
     print(res)
 
+"""
+# 二刷，差不多
+class Solution:
+    def integerBreak(self, n: int) -> int:
+        dp = [1] * (n)
+        for i in range(2, n + 1):
+            for j in range(1, i):
+                dp[i - 1] = max(dp[i - 1], dp[j - 1] * (i - j), (i - j) * j)
+        return dp[-1]
+"""
 print(integerBreak(n))
