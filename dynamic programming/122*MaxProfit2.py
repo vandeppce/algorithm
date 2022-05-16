@@ -17,6 +17,7 @@ def maxProfit(prices):
 """
 
 # 动规二
+# 注意区分和121递推公式
 def maxProfit(prices):
     dp = [[0] * 2 for _ in range(len(prices))]
     dp[0][0] = -prices[0]

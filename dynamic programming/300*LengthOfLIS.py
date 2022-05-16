@@ -19,7 +19,7 @@ def lengthOfLIS(nums):
             dp[i] = dp[i - 1]
     return dp[-1]
 """
-
+# 注意，dp不一定是递增的
 def lengthOfLIS(nums):
     dp = [1] * len(nums)
     for i in range(1, len(nums)):

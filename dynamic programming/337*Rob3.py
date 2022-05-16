@@ -60,6 +60,7 @@ class Solution:
 
 '''
 # 动态规划，递归过程中返回每个节点选择和不选择的最大值
+# 树的动态规划
 class Solution:
     def traversal(self, root):
         if not root:

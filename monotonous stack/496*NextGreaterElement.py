@@ -12,7 +12,8 @@ nums1 = [4,1,2]
 nums2 = [1,3,4,2]
 nums1 = [2,4]
 nums2 = [1,2,3,4]
-# 栈记录nums2中的递减序列
+
+# 栈记录nums2中的递减序列，当遇到nums2[i]大于栈顶值时，说明有可能遇到了更大的值，则出栈并检查nums1中索引
 def nextGreaterElement(nums1, nums2):
     res = [-1] * len(nums1)
     stack = [0]
@@ -28,4 +29,20 @@ def nextGreaterElement(nums1, nums2):
             stack.append(i)
     return res
 
+"""
+# 二刷
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        res = [-1] * len(nums1)
+        stack = [[0, nums2[0]]]
+        for i in range(1, len(nums2)):
+            while stack and nums2[i] > stack[-1][1]:
+                temp = stack.pop()
+                idx = temp[0]
+                value = temp[1]
+                if value in nums1:
+                    res[nums1.index(value)] = nums2[i]
+            stack.append([i, nums2[i]])
+        return res
+"""
 print(nextGreaterElement(nums1, nums2))

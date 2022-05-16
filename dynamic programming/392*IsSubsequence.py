@@ -44,4 +44,20 @@ def isSubsequence(s, t):
     if dp[-1][-1] == len(s):
         return True
     return False
+
+# 二刷，s为列，t为行。不和上比较，只和左比较，标志位为True or False
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        dp = [[False] * (len(t) + 1) for _ in range(len(s) + 1)]
+        for i in range(len(t) + 1):
+            dp[0][i] = True
+
+        for i in range(1, len(s) + 1):
+            for j in range(1, len(t) + 1):
+                if s[i - 1] == t[j - 1] and dp[i - 1][j - 1]:
+                    dp[i][j] = True
+                else:
+                    dp[i][j] = dp[i][j - 1]
+        return dp[-1][-1]
+
 print(isSubsequence(s, t))

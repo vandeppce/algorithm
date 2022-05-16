@@ -31,4 +31,20 @@ def nextGreaterElements(nums):
             break
     return res
 
+"""
+# 二刷，扩充nums为二倍
+class Solution:
+    def nextGreaterElements(self, nums: List[int]) -> List[int]:
+        length = len(nums)
+        res = [-1] * length * 2
+        nums.extend(nums)
+
+        stack = [[0, nums[0]]]
+        for i in range(1, len(nums)):
+            while stack and nums[i] > stack[-1][1]:
+                idx = stack.pop()[0]
+                res[idx] = nums[i]
+            stack.append([i, nums[i]])
+        return res[:length]
+"""
 print(nextGreaterElements(nums))

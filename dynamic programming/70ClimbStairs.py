@@ -22,5 +22,17 @@ def climbStairs(n):
                 dp[j] += dp[j - nums[i]]
     print(dp)
 
+"""
+# 二刷，背包问题
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        dp = [0] * (n + 1)
+        dp[0] = 1
+        for j in range(1, n + 1):
+            for i in range(1, 3):
+                if j >= i:
+                    dp[j] += dp[j - i]
+        return dp[-1]
+"""
 n = 3
 print(climbStairs(n))

@@ -1,12 +1,17 @@
-bag_size = 4
-weight = [1, 3, 4]
-value = [15, 20, 30]
+nums = [1,2,1]
 
-def test(bag_size, weight, value):
-    dp = [0] * (bag_size + 1)
-    for i in range(len(weight)):
-        for j in range(bag_size, weight[i] - 1, -1):
-            dp[j] = max(dp[j], dp[j - weight[i]] + value[i])
-    print(dp)
+class Solution:
+    def nextGreaterElements(self, nums):
+        length = len(nums)
+        res = [-1] * length * 2
+        nums.extend(nums)
+        stack = [[0, nums[0]]]
+        for i in range(1, len(nums)):
+            while stack and nums[i] > stack[-1][1]:
+                idx = stack.pop()[0]
+                res[idx] = nums[i]
+            stack.append([i, nums[i]])
+        return res[:length]
 
-print(test(bag_size, weight, value))
+solu = Solution()
+print(solu.nextGreaterElements(nums))

@@ -18,4 +18,18 @@ def findLength(nums1, nums2):
                     res = dp[i][j]
     return res
 
+"""
+# 二刷，由于要求的是连续的数组，所以当遇到s[i]!=s[j]时，不需要进行操作，也就是说不需要将dp[i][j]置为前面的最大值
+class Solution:
+    def findLength(self, nums1: List[int], nums2: List[int]) -> int:
+        dp = [[0] * (len(nums2) + 1) for _ in range(len(nums1) + 1)]
+        res = 0
+        for i in range(1, len(nums1) + 1):
+            for j in range(1, len(nums2) + 1):
+                if nums1[i - 1] == nums2[j - 1]:
+                    dp[i][j] = dp[i - 1][j - 1] + 1
+                    if dp[i][j] > res:
+                        res = dp[i][j]
+        return res
+"""
 print(findLength(nums1, nums2))

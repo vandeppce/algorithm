@@ -22,4 +22,23 @@ def numSquares(n):
             dp[j] = min(dp[j], dp[j - nums[i]] + 1)
     print(dp)
     return dp[-1]
+
+"""
+# 二刷，和322一个递推公式
+def numSquares(self, n: int) -> int:
+        nums = []
+        for i in range(1, n + 1):
+            if i * i <= n:
+                nums.append(i * i)
+            if i * i == n:
+                break
+        
+        dp = [n + 1] * (n + 1)
+        dp[0] = 0
+
+        for i in range(len(nums)):
+            for j in range(nums[i], n + 1):
+                dp[j] = min(dp[j], dp[j - nums[i]] + 1)
+        return dp[-1]
+"""
 print(numSquares(n))
