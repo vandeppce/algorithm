@@ -93,3 +93,34 @@ def strStr(haystack: str, needle: str) -> int:
     return -1
 print(strStr(haystack, needle))
 """
+
+"""
+# 三刷
+class Solution:
+    def getNext(self, needle):
+        next = [0] * len(needle)
+        j = 0
+        for i in range(1, len(needle)):
+            while j > 0 and needle[i] != needle[j]:
+                j = next[j - 1]
+            if needle[i] == needle[j]:
+                j += 1
+            next[i] = j
+        return next
+    def strStr(self, haystack: str, needle: str) -> int:
+        next = self.getNext(needle)
+        i = 0
+        j = 0
+        while i < len(haystack):
+            if haystack[i] == needle[j]:
+                i += 1
+                j += 1
+            else:
+                if j > 0:
+                    j = next[j - 1]
+                else:
+                    i += 1
+            if j == len(needle):
+                return i - j
+        return -1
+"""

@@ -34,3 +34,22 @@ class Solution:
                 return nodeA
 
         return None
+
+"""
+# 二刷
+class Solution:
+    def detectCycle(self, head: ListNode) -> ListNode:
+        header = ListNode(val = 0, next = head)
+        slow = header
+        fast = header
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if fast == slow:
+                slow = header
+                while fast != slow:
+                    fast = fast.next
+                    slow = slow.next
+                return slow
+        return None
+"""

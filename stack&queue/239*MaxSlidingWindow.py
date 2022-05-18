@@ -60,7 +60,7 @@ class Solution:
 print(maxSlidingWindow(nums, k))
 
 """
-# 二刷
+# 二刷, 维护一个单调递减队列，则出口元素即为滑动窗口最大值
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
         queue = []

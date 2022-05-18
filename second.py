@@ -1,17 +1,29 @@
-nums = [1,2,1]
-
+s = "cbaebabacd"
+p = "abc"
+s = "abab"
+p = "ab"
 class Solution:
-    def nextGreaterElements(self, nums):
-        length = len(nums)
-        res = [-1] * length * 2
-        nums.extend(nums)
-        stack = [[0, nums[0]]]
-        for i in range(1, len(nums)):
-            while stack and nums[i] > stack[-1][1]:
-                idx = stack.pop()[0]
-                res[idx] = nums[i]
-            stack.append([i, nums[i]])
-        return res[:length]
+    def findAnagrams(self, s: str, p: str):
+        need = {}
+        res = []
+        for c in p:
+            need[c] = need.get(c, 0) + 1
+        needLength = len(p)
+
+        for i, c in enumerate(list(s)):
+            if i > len(p) - 1 and s[i - len(p)] in need.keys():
+                need[s[i - len(p)]] += 1
+                if need[s[i - len(p)]] > 0:
+                    needLength += 1
+
+            if c in need.keys():
+                need[c] -= 1
+                if need[c] >= 0:
+                    needLength -= 1
+
+            if not needLength:
+                res.append(i - len(p) + 1)
+        return res
 
 solu = Solution()
-print(solu.nextGreaterElements(nums))
+print(solu.findAnagrams(s, p))

@@ -119,3 +119,52 @@ class Solution:
                 res.append(slow)
         return res
 """
+"""
+# 三刷
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        need = {}
+        res = []
+        for c in p:
+            need[c] = need.get(c, 0) + 1
+        needLength = len(p)
+
+        for i, c in enumerate(list(s)):
+            if i > len(p) - 1 and s[i - len(p)] in need.keys():
+                need[s[i - len(p)]] += 1
+                needLength += 1
+
+            if c in need.keys():
+                need[c] -= 1
+                needLength -= 1
+
+            if sum(need.values()) == 0 and max(need.values()) == 0:
+                res.append(i - len(p) + 1)
+        return res
+"""
+
+"""
+# 或者只有当删除或添加字符>0时才操作needLength，就是为了防止bab这种情况
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        need = {}
+        res = []
+        for c in p:
+            need[c] = need.get(c, 0) + 1
+        needLength = len(p)
+
+        for i, c in enumerate(list(s)):
+            if i > len(p) - 1 and s[i - len(p)] in need.keys():
+                need[s[i - len(p)]] += 1
+                if need[s[i - len(p)]] > 0:
+                    needLength += 1
+
+            if c in need.keys():
+                need[c] -= 1
+                if need[c] >= 0:
+                    needLength -= 1
+
+            if not needLength:
+                res.append(i - len(p) + 1)
+        return res
+"""

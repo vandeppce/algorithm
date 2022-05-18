@@ -3,7 +3,7 @@
 # 0 <= i, j, k, l < n
 # nums1[i] + nums2[j] + nums3[k] + nums4[l] == 0
 #
-
+# 该题和18FourSum不一样，一个哈希，一个双指针
 nums1 = [1,2]
 nums2 = [-2,-1]
 nums3 = [-1,2]

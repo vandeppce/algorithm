@@ -35,6 +35,7 @@ def repeatedSubstringPattern(s):
         return False
 
     next = getNext(s)
+    # 注意排除next[-1]为0的情况
     if next[-1] != 0 and len(s) % (len(s) - next[-1]) == 0:
         return True
     return False

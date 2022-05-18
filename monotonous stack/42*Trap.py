@@ -3,7 +3,7 @@
 height = [0,1,0,2,1,0,1,3,2,1,2,1]
 # height = [4,2,0,3,2,5]
 '''
-# 动规，记录左右最大值
+# 动规，记录左右最大值，对于每个位置，由于其宽为1，所以能盛雨水为min(left, right) - height[i]
 def trap(height):
     maxLeft = [0]
     maxRight = [0]
@@ -20,7 +20,7 @@ def trap(height):
     return res
 '''
 
-# 单调栈，递减
+# 单调栈，递减，也就是保留左侧最大值
 def trap(height):
     res = 0
     stack = [[0, height[0]]]
@@ -38,4 +38,5 @@ def trap(height):
                     res += (min(left, right) - mid) * (i - stack[-1][0] - 1)
             stack.append([i, height[i]])
     return res
+
 print(trap(height))

@@ -9,7 +9,7 @@
 
 n = 19
 n = 2
-
+# 注意为false的条件，既然无限循环，则肯定会出现历史结果
 def isHappy(n):
     history = []
     while True:
