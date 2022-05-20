@@ -72,3 +72,30 @@ class Solution:
         calSum(root, targetSum - root.val)
         return res
 """
+"""
+# 三刷，考虑负数
+class Solution:
+    def traversal(self, root, targetSum, total):
+        if not root.left and not root.right and total != targetSum:
+            return False
+        if not root.left and not root.right and total == targetSum:
+            return True
+        
+        if root.left:
+            total += root.left.val
+            if self.traversal(root.left, targetSum, total):
+                return True
+            total -= root.left.val
+        if root.right:
+            total += root.right.val
+            if self.traversal(root.right, targetSum, total):
+                return True
+            total -= root.right.val
+        return False
+
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        if not root:
+            return False
+        return self.traversal(root, targetSum, root.val)
+
+"""

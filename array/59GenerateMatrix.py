@@ -32,3 +32,38 @@ if n % 2 != 0:
     res[loop][loop] = n ** 2
 
 print(res)
+
+"""
+# 二刷
+class Solution:
+    def generateMatrix(self, n: int) -> List[List[int]]:
+        loop = n // 2
+        cnt = 0
+        matrix = [[0] * n for _ in range(n)]
+
+        for i in range(loop):
+            left = i
+            right = n - i - 1
+            top = i
+            bottom = n - i - 1
+            # top row
+            for j in range(left, right):
+                cnt += 1
+                matrix[top][j] = cnt
+            # right column
+            for j in range(top, bottom):
+                cnt += 1
+                matrix[j][right] = cnt
+            # bottom row
+            for j in range(right, left, -1):
+                cnt += 1
+                matrix[bottom][j] = cnt
+            # left column
+            for j in range(bottom, top, -1):
+                cnt += 1
+                matrix[j][left] = cnt
+            
+        if n % 2 == 1:
+            matrix[loop][loop] = cnt + 1
+        return matrix
+"""

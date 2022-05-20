@@ -83,3 +83,39 @@ class Solution:
         else:
             return [leftBorder + 1, rightBorder - 1]
 '''
+
+"""
+# 三刷，注意二分边界条件，比前面的更好
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        def leftBorder(nums, target):
+            left = 0
+            right = len(nums) - 1
+            while left <= right:
+                mid = (left + right) // 2
+                mid_val = nums[mid]
+                if mid_val >= target:
+                    right = mid - 1
+                else:
+                    left = mid + 1
+            return left
+
+        def rightBorder(nums, target):
+            left = 0
+            right = len(nums) - 1
+            while left <= right:
+                mid = (left + right) // 2
+                mid_val = nums[mid]
+                if mid_val <= target:
+                    left = mid + 1
+                else:
+                    right = mid - 1
+            return right
+
+        left = leftBorder(nums, target)
+        right = rightBorder(nums, target)
+        if left > right:
+            return [-1, -1]
+        else:
+            return [left, right]
+"""

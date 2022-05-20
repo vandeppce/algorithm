@@ -21,3 +21,21 @@ class Solution:
                 curr = curr.next
 
         return header.next
+
+"""
+# 二刷
+class Solution:
+    def removeElements(self, head: ListNode, val: int) -> ListNode:
+        header = ListNode(val = 0, next = head)
+        prev = header
+        node = head
+        while node:
+            if node.val == val:
+                node = node.next
+            else:
+                prev.next = node
+                prev = node
+                node = node.next
+        prev.next = node
+        return header.next
+"""

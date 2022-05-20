@@ -31,6 +31,7 @@ class Solution:
         return count
 
 # 递归，如果一侧为空，返回另一侧
+# 注意，这里要走到最近的叶子节点
 class Solution:
     def minDepth(self, root: TreeNode) -> int:
         def getDepth(root):

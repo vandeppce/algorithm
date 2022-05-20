@@ -9,7 +9,7 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-# 层序遍历每一个子树，然后分别和subRoot比较是否相同
+# 层序遍历每一个子树，然后分别和subRoot比较是否相同，比较过程又是后序遍历
 
 class Solution:
     def isSubtree(self, root: TreeNode, subRoot: TreeNode) -> bool:

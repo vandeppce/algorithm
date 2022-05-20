@@ -25,7 +25,7 @@ class Solution:
         return ret
 
 """
-# 二刷，递归法，当currdepth大于maxdepth时，记录的肯定是最左边的节点
+# 二刷，递归法，当currdepth大于maxdepth时，记录的肯定是最左边的节点，因为最左边的节点其实就是深度最大的第一个节点
 class Solution:
     def __init__(self):
         self.ret = 0

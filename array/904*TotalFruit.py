@@ -47,4 +47,30 @@ def totalFruit(fruits):
             fast += 1
     return max(maxFruit, fast - slow)
 
+"""
+# 二刷，单指针，使用hash
+class Solution:
+    def totalFruit(self, fruits: List[int]) -> int:
+        hasFruit = []
+        selected = []
+        maxNum = 0
+        for i in range(len(fruits)):
+            if fruits[i] in hasFruit:
+                selected.append(fruits[i])
+            else:
+                if len(hasFruit) < 2:
+                    hasFruit.append(fruits[i])
+                    selected.append(fruits[i])
+                else:
+                    maxNum = max(maxNum, len(selected))
+                    prev = selected[-1]
+                    j = len(selected) - 1
+                    while j >= 0 and selected[j - 1] == selected[j]:
+                        j = j - 1
+                    selected = selected[j:]
+                    selected.append(fruits[i])
+                    hasFruit = [prev]
+                    hasFruit.append(fruits[i])
+        return max(maxNum, len(selected))
+"""
 print(totalFruit(fruits))

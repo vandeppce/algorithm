@@ -44,7 +44,7 @@ while fast < length:
 print(current_min)
 
 """
-# 二刷
+# 二刷，双指针
 def minSubArrayLen(target, nums):
     slow = 0
     fast = 0
