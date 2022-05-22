@@ -6,6 +6,7 @@
 # 对于给定的输入，保证和为 target 的不同组合数少于 150 个。
 #
 
+# 注意和216的区别，一个数字可以重复，一个不可以重复，反映在start上
 class Solution:
     def __init__(self):
         self.path = []

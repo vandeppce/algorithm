@@ -31,3 +31,21 @@ class Solution:
         root.right = rightNode
 
         return root
+
+"""
+# 二刷，左右都要遍历到
+class Solution:
+    def trimBST(self, root: Optional[TreeNode], low: int, high: int) -> Optional[TreeNode]:
+        if not root:
+            return
+        if root.val > high:
+            l = self.trimBST(root.left, low, high)
+            return l
+        if root.val < low:
+            r = self.trimBST(root.right, low, high)
+            return r
+        
+        root.left = self.trimBST(root.left, low, high)
+        root.right = self.trimBST(root.right, low, high)
+        return root
+"""

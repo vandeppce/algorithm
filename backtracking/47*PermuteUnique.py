@@ -49,3 +49,29 @@ class Solution:
         self.backtracking(sorted(nums))
         return self.res
 """
+
+"""
+# 三刷，差不多，used数组
+class Solution:
+    def __init__(self):
+        self.path = []
+        self.res = []
+    def backtracking(self, nums, length):
+        if len(self.path) == length:
+            self.res.append(self.path[:])
+            return
+        used = []
+        for i in range(len(nums)):
+            if nums[i] in used:
+                continue
+            else:
+                self.path.append(nums[i])
+                tmp = nums.pop(i)
+                self.backtracking(nums, length)
+                nums.insert(i, tmp)
+                self.path.pop()
+                used.append(nums[i])
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        self.backtracking(sorted(nums), len(nums))
+        return self.res
+"""

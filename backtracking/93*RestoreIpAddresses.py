@@ -37,3 +37,30 @@ class Solution:
     def restoreIpAddresses(self, s: str):
         self.backtracking(s, 0)
         return self.res
+
+"""
+# 二刷，注意判断条件
+class Solution:
+    def __init__(self):
+        self.path = []
+        self.res = []
+    
+    def backtracking(self, s, start):
+        if start >= len(s):
+            if len(self.path) == 4:
+                ip = ""
+                for tmp in self.path:
+                    ip += tmp + "."
+                self.res.append(ip[:-1])
+            return
+        for i in range(start, len(s)):
+            curr = s[start: i + 1]
+            if (curr[0] == '0' and len(curr) == 1) or (curr[0] != '0' and int(curr) <= 255):
+                self.path.append(curr)
+                self.backtracking(s, i + 1)
+                self.path.pop()
+
+    def restoreIpAddresses(self, s: str) -> List[str]:
+        self.backtracking(s, 0)
+        return self.res
+"""

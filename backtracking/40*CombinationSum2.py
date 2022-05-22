@@ -4,7 +4,7 @@
 #
 # 注意：解集不能包含重复的组合。
 #
-
+# 注意和39，216解法上的区别
 class Solution:
     def __init__(self):
         self.res = []
