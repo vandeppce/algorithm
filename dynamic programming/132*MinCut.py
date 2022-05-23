@@ -1,23 +1,42 @@
-# 分割回文串 II
 # 给你一个字符串 s，请你将 s 分割成一些子串，使每个子串都是回文。
 #
 # 返回符合要求的 最少分割次数 。
-#
-#  
-#
-# 示例 1：
-#
-# 输入：s = "aab"
-# 输出：1
-# 解释：只需一次分割就可将 s 分割成 ["aa","b"] 这样两个回文子串。
 
-s = "aab"
-# s = "a"
-# s = "ab"
-# s = "aabcaccad"
-# s = "aabbaaaaa"
-s = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 
+# 先判断s[i][j]是否为回文串。
+# dp[i]：范围是[0, i]的回文子串，最少分割次数是dp[i]。
+#
+# 确定递推公式
+# 来看一下由什么可以推出dp[i]。
+#
+# 如果要对长度为[0, i]的子串进行分割，分割点为j。
+#
+# 那么如果分割后，区间[j + 1, i]是回文子串，那么dp[i] 就等于 dp[j] + 1。
+s = "aabc"
+def minCut(s):
+    isPalindromic = [[0] * len(s) for _ in range(len(s))]
+    for i in range(len(s)):
+        isPalindromic[i][i] = 1
+    for i in range(len(s) - 2, -1, -1):
+        for j in range(i + 1, len(s)):
+            if s[i] != s[j]:
+                isPalindromic[i][j] = 0
+            else:
+                if j == i + 1 or isPalindromic[i + 1][j - 1] == 1:
+                    isPalindromic[i][j] = 1
+    dp = [len(s)] * len(s)
+    dp[0] = 0
+    for i in range(1, len(s)):
+        if isPalindromic[0][i] == 1:
+            dp[i] = 0
+            continue
+        for j in range(i):
+            if isPalindromic[j + 1][i] == 1:
+                dp[i] = min(dp[i], dp[j] + 1)
+    return dp[-1]
+
+"""
+# 另一种
 # cnt[i]记录到第i个元素时最少需要分割次数，将已遍历元素存在box中，则考虑以下几种情况：
 # s[i]不在box中，说明是新元素，则cnt[i]=cnt[i-1]+1
 # box+s[i]成为回文串，则cnt[i]=0
@@ -60,3 +79,5 @@ for i in range(1, length):
                 cnt[i] = cnt[i - 1] + 1
     box += s[i]
 print(cnt)
+"""
+print(minCut(s))
