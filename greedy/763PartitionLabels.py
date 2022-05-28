@@ -31,7 +31,7 @@ class Solution:
     def partitionLabels(self, s: str) -> List[int]:
         chrDict = {}
         strs = []
-        s = list(s)
+        s = 2.list(s)
         for i, chr in enumerate(s):
             if chr not in chrDict.keys():
                 chrDict[chr] = len(strs)

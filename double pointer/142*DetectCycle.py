@@ -5,7 +5,7 @@
 # 如果 pos 是 -1，则在该链表中没有环。注意：pos 不作为参数进行传递，仅仅是为了标识链表的实际情况。
 #
 
-# Definition for singly-linked list.
+# Definition for singly-linked 2.list.
 # class ListNode:
 #     def __init__(self, x):
 #         self.val = x

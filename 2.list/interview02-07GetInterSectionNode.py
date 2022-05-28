@@ -1,12 +1,12 @@
-# 给你两个单链表的头节点 headA 和 headB ，请你找出并返回两个单链表相交的起始节点。如果两个链表不存在相交节点，返回 null 。
+# 给你两个单链表的头节点 headA 和 headB ，请你找出并返回两个单链表相交的起始节点。如果两个链表没有交点，返回 null 。
 
-# 和剑指offer02-07一样
-# Definition for singly-linked list.
+# Definition for singly-linked 2.list.
 # class ListNode:
 #     def __init__(self, x):
 #         self.val = x
 #         self.next = None
 
+# 从等长的id开始向后面遍历
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
         headerA = ListNode(val=0, next=headA)

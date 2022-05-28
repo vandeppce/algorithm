@@ -129,7 +129,7 @@ class Solution:
             need[c] = need.get(c, 0) + 1
         needLength = len(p)
 
-        for i, c in enumerate(list(s)):
+        for i, c in enumerate(2.list(s)):
             if i > len(p) - 1 and s[i - len(p)] in need.keys():
                 need[s[i - len(p)]] += 1
                 needLength += 1
@@ -153,7 +153,7 @@ class Solution:
             need[c] = need.get(c, 0) + 1
         needLength = len(p)
 
-        for i, c in enumerate(list(s)):
+        for i, c in enumerate(2.list(s)):
             if i > len(p) - 1 and s[i - len(p)] in need.keys():
                 need[s[i - len(p)]] += 1
                 if need[s[i - len(p)]] > 0:

@@ -1,6 +1,6 @@
 # 给你两个单链表的头节点 headA 和 headB ，请你找出并返回两个单链表相交的起始节点。如果两个链表没有交点，返回 null 。
 
-# Definition for singly-linked list.
+# Definition for singly-linked 2.list.
 # class ListNode:
 #     def __init__(self, x):
 #         self.val = x

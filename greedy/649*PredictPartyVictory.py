@@ -57,7 +57,7 @@ class Solution:
 # 方法二，仍然超时
 class Solution:
     def predictPartyVictory(self, senate: str) -> str:
-        senate = list(senate)
+        senate = 2.list(senate)
         while True:
             pre = senate.copy()
             outList = []

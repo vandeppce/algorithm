@@ -1,6 +1,6 @@
 # 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
 
-# Definition for singly-linked list.
+# Definition for singly-linked 2.list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
 #         self.val = val

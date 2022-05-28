@@ -50,7 +50,7 @@ class Solution:
                 head.next = head2
 
 # 方式二，这种方式是左侧比右侧多，简单
-# Definition for singly-linked list.
+# Definition for singly-linked 2.list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
 #         self.val = val
@@ -87,7 +87,7 @@ class Solution:
             prev = next2
 
 # 方式三，双向队列
-# Definition for singly-linked list.
+# Definition for singly-linked 2.list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
 #         self.val = val
