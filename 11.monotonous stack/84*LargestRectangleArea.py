@@ -112,5 +112,27 @@ class Solution:
                 stack.append([i, heights[i]])
         return result
 """
+
+"""
+# 三刷，单调栈只记录索引，一维
+class Solution:
+    def largestRectangleArea(self, heights: List[int]) -> int:
+        heights.insert(0, 0)
+        heights.append(0)
+        stack = [0]
+        res = 0
+        for i in range(1, len(heights)):
+            if heights[i] > heights[stack[-1]]:
+                stack.append(i)
+            else:
+                while stack and heights[i] <= heights[stack[-1]]:
+                    mid = stack.pop()
+                    if stack:
+                        left = stack[-1]
+                        right = i
+                        res = max(res, heights[mid] * (right - left - 1))
+                stack.append(i)
+        return res
+"""
 solu = Solution()
 print(solu.largestRectangleArea(heights))

@@ -37,4 +37,33 @@ def singleNumbers(nums):
             y = y ^ num
     return [x, y]
 
+"""
+# 二刷
+class Solution:
+    def singleNumbers(self, nums: List[int]) -> List[int]:
+        # 得到x^y
+        n = 0
+        for num in nums:
+            n ^= num
+        # 计算x与y哪一位不相等
+        m = 1
+        while n & m == 0:
+            m <<= 1
+        # 分组，此时x和y分别落入两个组
+        g1 = []
+        g2 = []
+        for num in nums:
+            if num & m:
+                g1.append(num)
+            else:
+                g2.append(num)
+        # 每个组计算
+        n1, n2 = 0, 0
+        while g1 or g2:
+            if g1:
+                n1 ^= g1.pop()
+            if g2:
+                n2 ^= g2.pop()
+        return [n1, n2]
+"""
 print(singleNumbers(nums))

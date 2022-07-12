@@ -36,3 +36,34 @@ class Solution:
                     dfs(grid, i, j)
 
         return count
+
+"""
+# 二刷，dfs
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        numRows = len(grid)
+        numCols = len(grid[0])
+        count = 0
+
+        def dfs(i, j):
+            grid[i][j] = "0"
+            # 上
+            if i > 0 and grid[i - 1][j] == "1":
+                dfs(i - 1, j)
+            # 下
+            if i < numRows - 1 and grid[i + 1][j] == "1":
+                dfs(i + 1, j)
+            # 左
+            if j > 0 and grid[i][j - 1] == "1":
+                dfs(i, j - 1)
+            # 右
+            if j < numCols - 1 and grid[i][j + 1] == "1":
+                dfs(i, j + 1)
+        
+        for i in range(numRows):
+            for j in range(numCols):
+                if grid[i][j] == "1":
+                    count += 1
+                    dfs(i, j)
+        return count
+"""

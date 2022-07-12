@@ -30,3 +30,29 @@ class Solution:
                 return False
 
         return True
+
+"""
+# 前序遍历，不对
+
+添加备注
+
+编辑代码
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        def traversal(root):
+            if not root:
+                return True
+            if root.left and root.val <= root.left.val:
+                return False
+            if root.right and root.val >= root.right.val:
+                return False
+            return traversal(root.left) and traversal(root.right)
+        return traversal(root)
+"""

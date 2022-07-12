@@ -24,3 +24,14 @@ class Solution:
     def hammingWeight(self, n: int) -> int:
         ret = sum(1 for i in range(32) if n & (1 << i))
         return ret
+
+"""
+# 位运算，与1，右移
+class Solution:
+    def hammingWeight(self, n: int) -> int:
+        res = 0
+        while n:
+            res += n & 1
+            n >>= 1
+        return res
+"""

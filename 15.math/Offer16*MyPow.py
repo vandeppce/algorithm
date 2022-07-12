@@ -58,6 +58,26 @@ class Solution:
 
         return quickMul(n) if n >= 0 else 1.0 / quickMul(-n)
 
+"""
+# 二刷
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        def dfs(x, n):
+            if n == 1:
+                return x
+            if n % 2 == 0:
+                semi = dfs(x, n // 2)
+                return semi * semi
+            else:
+                semi = dfs(x, n // 2)
+                return semi * semi * x
+        if n == 0:
+            return 1
+        elif n > 0:
+            return dfs(x, n)
+        else:
+            return 1 / dfs(x, -n)
+"""
 x = 2.10000
 n = 3
 solu = Solution()

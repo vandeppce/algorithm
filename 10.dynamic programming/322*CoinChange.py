@@ -8,7 +8,7 @@
 # 凑足总额为j - coins[i]的最少个数为dp[j - coins[i]]，那么只需要加上一个钱币coins[i]即dp[j - coins[i]] + 1就是dp[j]（考虑coins[i]）
 # 所以dp[j] 要取所有 dp[j - coins[i]] + 1 中最小的。
 # 递推公式：dp[j] = min(dp[j - coins[i]] + 1, dp[j]);
-
+# 完全背包问题
 coins = [1, 2, 5]
 amount = 11
 coins = [2]

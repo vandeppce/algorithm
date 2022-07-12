@@ -37,7 +37,7 @@ class Solution:
                 if s[left - 1] != " ":
                     tmp += s[left]
             left += 1
-        tmp = 2.list(tmp)
+        tmp = list(tmp)
 
         # 2. 字符串反向
         left = 0

@@ -64,3 +64,35 @@ class Solution:
         self.8.backtracking(digits, 0)
         return self.res
 """
+
+"""
+# 另一种回溯，用pop
+class Solution:
+    def __init__(self):
+        self.path = ""
+        self.res = []
+        self.table = {'2': 'abc',
+                      '3': 'def',
+                      '4': 'ghi',
+                      '5': 'jkl',
+                      '6': 'mno',
+                      '7': 'pqrs',
+                      '8': 'tuv',
+                      '9': 'wxyz'}
+    def backtracking(self, digits):
+        if not digits:
+            if self.path:
+                self.res.append(self.path)
+            return
+        num = digits.pop(0)
+        cStr = self.table[num]
+        for i in range(len(cStr)):
+            self.path += cStr[i]
+            self.backtracking(digits)
+            self.path = self.path[:-1]
+        digits.insert(0, num)
+    def letterCombinations(self, digits: str) -> List[str]:
+        digits = list(digits)
+        self.backtracking(digits)
+        return self.res
+"""
