@@ -42,4 +42,16 @@ def reverseStr(s, k):
         p += 2 * k
     return s
 
+"""
+# 二刷
+class Solution:
+    def reverseStr(self, s: str, k: int) -> str:
+        length = len(s)
+        p = 0
+        s = list(s)
+        while p < length:
+            s[p: p + 2 * k] = s[p: p + k][::-1] + s[p + k: p + 2 * k]
+            p += 2 * k
+        return "".join(s)
+"""
 print(reverseStr(s, k))

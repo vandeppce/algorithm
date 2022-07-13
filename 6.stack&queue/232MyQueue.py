@@ -60,3 +60,28 @@ class MyQueue:
 # param_2 = obj.pop()
 # param_3 = obj.peek()
 # param_4 = obj.empty()
+
+"""
+class MyQueue:
+    def __init__(self):
+        self.stack_in = []
+        self.stack_out = []
+    def push(self, x: int) -> None:
+        self.stack_in.append(x)
+    def pop(self) -> int:
+        while self.stack_in:
+            self.stack_out.append(self.stack_in.pop())
+        res = self.stack_out.pop()
+        while self.stack_out:
+            self.stack_in.append(self.stack_out.pop())
+        return res
+    def peek(self) -> int:
+        while self.stack_in:
+            self.stack_out.append(self.stack_in.pop())
+        res = self.stack_out[-1]
+        while self.stack_out:
+            self.stack_in.append(self.stack_out.pop())
+        return res
+    def empty(self) -> bool:
+        return not self.stack_in
+"""

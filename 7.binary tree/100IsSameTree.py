@@ -26,3 +26,19 @@ class Solution:
             return res_l and res_r
 
         return compare(p, q)
+
+"""
+class Solution:
+    def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
+        def compare(treeP, treeQ):
+            if not treeP and not treeQ:
+                return True
+            if not treeP and treeQ:
+                return False
+            if not treeQ and treeP:
+                return False
+            if treeP.val != treeQ.val:
+                return False
+            return compare(treeP.left, treeQ.left) and compare(treeP.right, treeQ.right)
+        return compare(p, q)
+"""

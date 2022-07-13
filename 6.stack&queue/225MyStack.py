@@ -29,7 +29,35 @@ class MyStack:
         return not self.stack_in and not self.stack_bak
 
 
+"""
+class MyStack:
 
+    def __init__(self):
+        self.queue_in = []
+        self.queue_bak = []
+
+    def push(self, x: int) -> None:
+        self.queue_in.append(x)
+
+    def pop(self) -> int:
+        while len(self.queue_in) > 1:
+            self.queue_bak.append(self.queue_in.pop(0))
+        res = self.queue_in.pop()
+        while self.queue_bak:
+            self.queue_in.append(self.queue_bak.pop(0))
+        return res 
+
+    def top(self) -> int:
+        while self.queue_in:
+            self.queue_bak.append(self.queue_in.pop(0))
+        res = self.queue_bak[-1]
+        while self.queue_bak:
+            self.queue_in.append(self.queue_bak.pop(0))
+        return res
+
+    def empty(self) -> bool:
+        return not self.queue_in
+"""
 # Your MyStack object will be instantiated and called as such:
 # obj = MyStack()
 # obj.push(x)

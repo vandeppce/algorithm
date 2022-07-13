@@ -25,4 +25,17 @@ def groupAnagrams(strs):
             res[index].append(str)
     return res
 
+"""
+# 二刷，对str排序
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        dict = {}
+        for str in strs:
+            keys = "".join(sorted(str))
+            if keys in dict.keys():
+                dict[keys].append(str)
+            else:
+                dict[keys] = [str]
+        return list(dict.values())
+"""
 print(groupAnagrams(strs))
