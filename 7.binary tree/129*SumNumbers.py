@@ -7,7 +7,7 @@
 # 叶节点 是指没有子节点的节点。
 #
 
-# Definition for a 7.binary tree node.
+# Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
@@ -40,3 +40,26 @@ class Solution:
         for num in self.res:
             total += int(num)
         return total
+
+"""
+# 二刷，不转成字符串，直接相加
+class Solution:
+    def __init__(self):
+        self.path = 0
+        self.res = []
+    def backtracking(self, root):
+        self.path = self.path * 10 + root.val
+        if not root.left and not root.right:
+            self.res.append(self.path)
+            return
+        if root.left:
+            self.backtracking(root.left)
+            self.path = self.path // 10
+        if root.right:
+            self.backtracking(root.right)
+            self.path = self.path // 10
+    def sumNumbers(self, root: TreeNode) -> int:
+        self.backtracking(root)
+        return sum(self.res)
+
+"""
